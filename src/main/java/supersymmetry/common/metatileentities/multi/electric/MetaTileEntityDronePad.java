@@ -214,7 +214,6 @@ public class MetaTileEntityDronePad extends RecipeMapMultiblockController {
             if (this.getMetaTileEntity().hasDrone()) {
                 super.completeRecipe();
             } else {
-                this.performMaintenanceMufflerOperations();
                 this.progressTime = 0;
                 this.setMaxProgress(0);
                 this.recipeEUt = 0;
@@ -225,7 +224,7 @@ public class MetaTileEntityDronePad extends RecipeMapMultiblockController {
                 this.parallelRecipesPerformed = 0;
                 this.overclockResults = new int[]{0, 0};
             }
-            this.getMetaTileEntity().drone.setDead();
+            if(this.getMetaTileEntity().drone != null) this.getMetaTileEntity().drone.setDead();
             this.getMetaTileEntity().droneReachedSky = false;
         }
     }
